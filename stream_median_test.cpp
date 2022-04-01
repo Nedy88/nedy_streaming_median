@@ -23,6 +23,11 @@ TEST(StreamMedianTest, BasicAssertions) {
 
 
 TEST(StreamMedianEmptyTest, BasicAssertions) {
-    StreamMedian obj;
-    EXPECT_EQ(obj.median(), 0);
+    try {
+        StreamMedian obj;
+        auto x = obj.median();
+        FAIL();
+    } catch(const out_of_range& e) {
+        SUCCEED();
+    }
 }
